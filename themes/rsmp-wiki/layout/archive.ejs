@@ -1,0 +1,8 @@
+<section class="card parchment page-wrap">
+  <h1>归档</h1>
+  <div class="wiki-content">
+    <% site.posts.sort('date', -1).each(function(post){ %>
+      <p><a href="<%- url_for(post.path) %>"><%= post.title %></a> <span class="muted"><%= date(post.date, 'YYYY-MM-DD') %></span></p>
+    <% }) %>
+  </div>
+</section>

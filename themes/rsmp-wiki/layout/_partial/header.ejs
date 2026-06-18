@@ -1,0 +1,24 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="<%- url_for('/') %>">
+      <span class="brand-icon">✦</span>
+      <span>
+        <strong>RSMP S2 Wiki</strong>
+        <small>Survival · SoulHeads · Folia</small>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="打开导航">☰</button>
+    <nav class="nav" id="navMenu">
+      <% const menu = theme.menu || {}; Object.keys(menu).forEach(function(name){ %>
+        <a href="<%- url_for(menu[name]) %>"><%= name %></a>
+      <% }) %>
+    </nav>
+  </div>
+  <div class="search-row">
+    <div class="search-box">
+      <span>⌕</span>
+      <input id="wikiSearch" type="search" placeholder="搜索技能、配方、命令、玩法……">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</header>
