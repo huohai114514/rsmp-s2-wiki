@@ -29,18 +29,21 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install -g hexo-cli
 
-      - name: Clean
-        run: npx hexo clean
-
-      - name: Build
-        run: npm run build
+      - name: Build Hexo
+        run: |
+          hexo clean
+          hexo generate
+          ls -la
+          ls -la public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: public
 
   deploy:
     environment:
