@@ -1,10 +1,4 @@
-<article class="page-wrap card parchment">
-  <header class="page-header">
-    <p class="eyebrow">更新日志</p>
-    <h1><%= page.title %></h1>
-    <p class="muted"><%= date(page.date, 'YYYY-MM-DD') %></p>
-  </header>
-  <div class="wiki-content">
-    <%- page.content %>
-  </div>
+<article class="wiki-card">
+  <div class="bossbar"><span><%= page.title || '文章' %></span></div>
+  <%- page.content %>
 </article>

@@ -1,86 +1,28 @@
-# RSMP S2 Wiki - Hexo Config
-# 上传 GitHub 前，只需要把 url 里的 huohai114514 改成你的 GitHub 用户名。
-
-# Site
 title: RSMP S2 Wiki
-subtitle: 灵魂、头颅、祭坛与技能图鉴
-description: RSMP S2 玩家资料站，介绍 SoulHeadsFolia、技能、配方、排行榜、复活祭坛与入服教程。
-keywords: RSMP S2, Minecraft, Wiki, SoulHeadsFolia, Folia, Geyser
-author: Huoxi
+subtitle: 祭坛季 · 荒野生存 · 生活系统重做
+description: RSMP S2 Minecraft 玩家手册
+author: huohai114514
 language: zh-CN
-timezone: Asia/Tokyo
+timezone: Asia/Shanghai
 
-# URL
-# 例子：如果你的 GitHub 用户名是 huohai114514，仓库叫 rsmp-s2-wiki：
-# url: https://huohai114514.github.io/rsmp-s2-wiki
-# root: /rsmp-s2-wiki/
 url: https://huohai114514.github.io/rsmp-s2-wiki
 root: /rsmp-s2-wiki/
 permalink: :title/
-permalink_defaults:
 pretty_urls:
   trailing_index: false
   trailing_html: false
 
-# Directory
-source_dir: source
-public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
+theme: rsmp-wiki
 
-# Writing
-new_post_name: :title.md
-default_layout: post
-titlecase: false
-external_link:
-  enable: true
-  field: site
-  exclude: ''
-filename_case: 0
-render_drafts: false
-post_asset_folder: true
-relative_link: false
-future: true
-syntax_highlighter: highlight.js
-highlight:
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
-
-# Home page setting
 index_generator:
   path: ''
   per_page: 10
   order_by: -date
 
-# Category & Tag
-default_category: RSMP S2
-category_map:
-tag_map:
+marked:
+  prependRoot: true
+  postAsset: true
+  gfm: true
 
-# Date / Time format
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-updated_option: mtime
-
-# Pagination
-per_page: 10
-pagination_dir: page
-
-# Theme
-theme: rsmp-wiki
-
-# Search index: generated into public/search.json
-search:
-  path: search.json
-  field: all
-  content: true
-  format: striptags
-
-# Deployment is handled by GitHub Actions in .github/workflows/pages.yml
+skip_render:
+  - README.md

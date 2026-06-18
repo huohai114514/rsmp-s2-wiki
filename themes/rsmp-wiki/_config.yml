@@ -1,10 +1,13 @@
 menu:
   首页: /
-  入服教程: /join/
-  S2 简介: /season/
-  灵魂系统: /soulheads/
-  技能图鉴: /soulheads/skills/
-  合成配方: /soulheads/recipes/
-  复活祭坛: /soulheads/altar/
-  命令: /soulheads/commands/
-  FAQ: /faq/
+  新手必读: /guide/
+  合成配方: /recipes/
+  炒菜: /cooking/
+  农务果树: /farming/
+  钓鱼: /fishing/
+  日历: /calendar/
+  星期怪物: /mobs-week/
+  装备附魔: /enchant/
+  精英Boss: /bosses/
+  村民战利品: /villagers-loot/
+  修复记录: /changelog/

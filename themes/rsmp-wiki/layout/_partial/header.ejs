@@ -1,24 +1,18 @@
-<header class="topbar">
-  <div class="topbar-inner">
+<header class="site-header">
+  <div class="header-top">
     <a class="brand" href="<%- url_for('/') %>">
       <span class="brand-icon">✦</span>
       <span>
         <strong>RSMP S2 Wiki</strong>
-        <small>Survival · SoulHeads · Folia</small>
+        <small>祭坛季 · 荒野生存 · 生活系统重做</small>
       </span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="打开导航">☰</button>
-    <nav class="nav" id="navMenu">
-      <% const menu = theme.menu || {}; Object.keys(menu).forEach(function(name){ %>
-        <a href="<%- url_for(menu[name]) %>"><%= name %></a>
-      <% }) %>
-    </nav>
+    <div class="clock-chip">历法 | 769年1月1日 星期一 | 第1天 | 06:00</div>
   </div>
-  <div class="search-row">
-    <div class="search-box">
-      <span>⌕</span>
-      <input id="wikiSearch" type="search" placeholder="搜索技能、配方、命令、玩法……">
-    </div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
+  <nav class="site-nav" aria-label="主导航">
+    <% const menu = theme.menu || {}; %>
+    <% Object.keys(menu).forEach(function(name){ %>
+      <a href="<%- url_for(menu[name]) %>"><%= name %></a>
+    <% }) %>
+  </nav>
 </header>

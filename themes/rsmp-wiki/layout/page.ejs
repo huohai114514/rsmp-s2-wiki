@@ -1,10 +1,4 @@
-<article class="page-wrap card parchment">
-  <header class="page-header">
-    <p class="eyebrow">RSMP S2 Wiki</p>
-    <h1><%= page.title || '未命名页面' %></h1>
-    <% if (page.updated) { %><p class="muted">最后更新：<%= date(page.updated, 'YYYY-MM-DD') %></p><% } %>
-  </header>
-  <div class="wiki-content">
-    <%- page.content %>
-  </div>
+<article class="wiki-card">
+  <div class="bossbar"><span><%= page.title || 'RSMP S2 Wiki' %></span></div>
+  <%- page.content %>
 </article>
