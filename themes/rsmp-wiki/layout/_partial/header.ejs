@@ -3,24 +3,61 @@
         <a href="<%- url_for('/') %>" class="nav-brand">
             <span class="logo-pixel">⛏️</span> RSMP S2 Wiki
         </a>
-        <button class="nav-toggle" id="menuToggle" aria-label="Toggle Menu">
+
+        <button class="nav-toggle" id="menuToggle" aria-label="Toggle Menu" type="button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
+
         <nav class="nav-menu" id="navMenu">
             <a href="<%- url_for('/') %>" class="nav-item">首页</a>
-            <a href="<%- url_for('guide/index.html') %>" class="nav-item">新手必读</a>
-            <a href="<%- url_for('recipes/index.html') %>" class="nav-item">合成配方</a>
-            <a href="<%- url_for('cooking/index.html') %>" class="nav-item">炒菜系统</a>
-            <a href="<%- url_for('farming/index.html') %>" class="nav-item">农务果树</a>
-            <a href="<%- url_for('fishing/index.html') %>" class="nav-item">钓鱼系统</a>
-            <a href="<%- url_for('calendar/index.html') %>" class="nav-item">历法</a>
-            <a href="<%- url_for('mobs-week/index.html') %>" class="nav-item">星期怪物</a>
-            <a href="<%- url_for('enchant/index.html') %>" class="nav-item">装备附魔</a>
-            <a href="<%- url_for('bosses/index.html') %>" class="nav-item">精英怪Boss</a>
-            <a href="<%- url_for('villagers-loot/index.html') %>" class="nav-item">村民战利品</a>
-            <a href="<%- url_for('changelog/index.html') %>" class="nav-item">修复记录</a>
+
+            <div class="nav-group">
+                <button class="nav-item nav-parent" type="button">新手/入服 ▾</button>
+                <div class="nav-dropdown">
+                    <a href="<%- url_for('guide/index.html') %>" class="nav-subitem">新手必读</a>
+                    <a href="<%- url_for('join/index.html') %>" class="nav-subitem">加入服务器</a>
+                    <a href="<%- url_for('faq/index.html') %>" class="nav-subitem">FAQ</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-item nav-parent" type="button">生活系统 ▾</button>
+                <div class="nav-dropdown">
+                    <a href="<%- url_for('cooking/index.html') %>" class="nav-subitem">炒菜系统</a>
+                    <a href="<%- url_for('farming/index.html') %>" class="nav-subitem">农务果树</a>
+                    <a href="<%- url_for('fishing/index.html') %>" class="nav-subitem">钓鱼系统</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-item nav-parent" type="button">生存改动 ▾</button>
+                <div class="nav-dropdown">
+                    <a href="<%- url_for('recipes/index.html') %>" class="nav-subitem">合成配方</a>
+                    <a href="<%- url_for('calendar/index.html') %>" class="nav-subitem">游戏日历</a>
+                    <a href="<%- url_for('mobs-week/index.html') %>" class="nav-subitem">星期怪物</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-item nav-parent" type="button">装备战斗 ▾</button>
+                <div class="nav-dropdown">
+                    <a href="<%- url_for('enchant/index.html') %>" class="nav-subitem">装备附魔</a>
+                    <a href="<%- url_for('bosses/index.html') %>" class="nav-subitem">精英怪 Boss</a>
+                    <a href="<%- url_for('villagers-loot/index.html') %>" class="nav-subitem">村民战利品</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-item nav-parent" type="button">资料库 ▾</button>
+                <div class="nav-dropdown">
+                    <a href="<%- url_for('season/index.html') %>" class="nav-subitem">赛季介绍</a>
+                    <a href="<%- url_for('soulheads/index.html') %>" class="nav-subitem">灵魂系统</a>
+                    <a href="<%- url_for('economy/index.html') %>" class="nav-subitem">经济系统</a>
+                    <a href="<%- url_for('changelog/index.html') %>" class="nav-subitem">修复记录</a>
+                </div>
+            </div>
         </nav>
     </div>
 </header>
