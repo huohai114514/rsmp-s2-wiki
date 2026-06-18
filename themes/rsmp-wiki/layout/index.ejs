@@ -1,57 +1,9 @@
-<section class="hero card card-glow">
-  <div class="hero-copy">
-    <p class="eyebrow">Minecraft Survival Wiki</p>
-    <h1>RSMP S2 玩家资料站</h1>
-    <p>这里用于介绍 RSMP S2 的入服方式、SoulHeadsFolia 技能、配方、复活祭坛、排行榜、农业、钓鱼、料理和命令说明。</p>
-    <div class="hero-actions">
-      <a class="btn primary" href="<%- url_for('/join/') %>">加入服务器</a>
-      <a class="btn" href="<%- url_for('/soulheads/skills/') %>">查看技能图鉴</a>
-      <a class="btn" href="<%- url_for('/soulheads/recipes/') %>">合成配方</a>
-    </div>
-  </div>
-  <div class="altar-orb">
-    <span class="orb-core">☠</span>
-    <span class="orb-ring one"></span>
-    <span class="orb-ring two"></span>
-  </div>
-</section>
-
-<section class="grid two">
-  <article class="card">
-    <p class="eyebrow">最新重点</p>
-    <h2>RSMP S2 核心内容</h2>
-    <ul class="check-list">
-      <li>SoulHeadsFolia 技能系统</li>
-      <li>灵魂头颅与复活祭坛</li>
-      <li>技能抽取书、技能图鉴与排行榜 UI</li>
-      <li>钓鱼、农业、料理与服务器经济</li>
-      <li>Java + 基岩版互通入服说明</li>
-    </ul>
-  </article>
-  <article class="card parchment">
-    <p class="eyebrow">玩家快速导航</p>
-    <div class="link-grid">
-      <a href="<%- url_for('/join/') %>">入服教程</a>
-      <a href="<%- url_for('/soulheads/') %>">灵魂系统</a>
-      <a href="<%- url_for('/soulheads/skills/') %>">技能图鉴</a>
-      <a href="<%- url_for('/soulheads/recipes/') %>">配方大全</a>
-      <a href="<%- url_for('/soulheads/altar/') %>">复活祭坛</a>
-      <a href="<%- url_for('/soulheads/commands/') %>">命令说明</a>
-      <a href="<%- url_for('/economy/') %>">经济与附魔</a>
-      <a href="<%- url_for('/faq/') %>">常见问题</a>
-    </div>
-  </article>
-</section>
-
-<section class="card">
-  <p class="eyebrow">Wiki 分类</p>
-  <h2>资料卡片</h2>
-  <div class="feature-grid">
-    <a class="feature" href="<%- url_for('/soulheads/skills/') %>"><span>✦</span><strong>技能图鉴</strong><em>触发方式、冷却、使用场景</em></a>
-    <a class="feature" href="<%- url_for('/soulheads/recipes/') %>"><span>▦</span><strong>合成配方</strong><em>材料、摆法、用途</em></a>
-    <a class="feature" href="<%- url_for('/soulheads/altar/') %>"><span>♰</span><strong>复活祭坛</strong><em>祭坛规则与复活流程</em></a>
-    <a class="feature" href="<%- url_for('/soulheads/ranking/') %>"><span>♕</span><strong>排行榜</strong><em>生涯统计与头衔</em></a>
-    <a class="feature" href="<%- url_for('/economy/') %>"><span>◆</span><strong>经济附魔</strong><em>经验、铁砧、村民限制</em></a>
-    <a class="feature" href="<%- url_for('/faq/') %>"><span>?</span><strong>FAQ</strong><em>玩家常见问题</em></a>
-  </div>
-</section>
+<article class="wiki-card home-card">
+  <div class="bossbar"><span><%= config.title %></span></div>
+  <% if (page.content) { %>
+    <%- page.content %>
+  <% } else { %>
+    <h1>RSMP S2 Wiki</h1>
+    <p>欢迎来到 RSMP S2 玩家手册。</p>
+  <% } %>
+</article>
