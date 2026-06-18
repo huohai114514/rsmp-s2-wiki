@@ -1,0 +1,137 @@
+# CloudCannon configuration for RSMP S2 Wiki
+# Place this file at the root of your Hexo repository.
+
+source: /
+base_url: /rsmp-s2-wiki/
+timezone: Asia/Shanghai
+
+# Global upload/static paths for Markdown image insertion.
+# Images uploaded through CloudCannon will be saved inside source/images.
+paths:
+  uploads: /source/images/
+  static: /rsmp-s2-wiki/images/
+
+# Put wiki pages into a clear editor collection.
+collection_groups:
+  - heading: RSMP S2 Wiki
+    collections:
+      - wiki_pages
+      - media_library
+
+collections_config:
+  wiki_pages:
+    path: source
+    name: Wiki 页面
+    singular_name: Wiki 页面
+    description: 编辑 RSMP S2 玩家手册页面。主要内容文件都在 source/ 下。
+    icon: menu_book
+    glob:
+      - '**/*.md'
+      - '!_posts/**/*'
+      - '!_drafts/**/*'
+    url: /[full_slug]/
+    _enabled_editors:
+      - visual
+      - content
+      - data
+    disable_add: false
+    disable_add_folder: false
+    schemas:
+      wiki_page:
+        path: .cloudcannon/schemas/wiki_page.md
+        name: Wiki 页面
+        icon: article
+    create:
+      path: '[relative_base_path]/{title|slugify}/index.md'
+      extra_data:
+        layout: page
+    preview:
+      text:
+        - key: title
+        - Untitled Wiki Page
+      subtext:
+        - key: description
+        - RSMP S2 Wiki 页面
+      icon: article
+    paths:
+      uploads: /source/images/
+      static: /rsmp-s2-wiki/images/
+    _inputs:
+      title:
+        type: text
+        label: 页面标题
+        comment: 显示在页面顶部和浏览器标题中。
+      description:
+        type: text
+        label: 页面简介
+        comment: 给编辑器看的短说明，可不填。
+      layout:
+        type: select
+        label: 页面布局
+        options:
+          values:
+            - page
+            - post
+      cover_image:
+        type: image
+        label: 页面封面图
+        comment: 可选。上传图片会保存到 source/images/。
+        options:
+          path:
+            uploads: /source/images/
+          accepts_mime_types:
+            - image/png
+            - image/jpeg
+            - image/webp
+          allowed_sources:
+            - site-files
+          max_file_size: 5242880
+      icon:
+        type: text
+        label: 图标占位
+        comment: 例如：[图标: 时钟]、[物品: 钻石块]。可不填。
+    _editables:
+      content:
+        bold: true
+        italic: true
+        underline: true
+        link: true
+        image: true
+        code: true
+        bulletedlist: true
+        numberedlist: true
+        table: true
+        format: p h1 h2 h3 h4 blockquote
+        undo: true
+        redo: true
+
+  media_library:
+    path: source/images
+    name: 图片素材库
+    singular_name: 图片
+    description: 上传 Wiki 图片、截图、图标占位素材。建议使用英文文件名。
+    icon: image
+    disable_url: true
+    _enabled_editors:
+      - data
+    paths:
+      uploads: /source/images/
+      static: /rsmp-s2-wiki/images/
+
+# File-specific helpers for root configuration files.
+file_config:
+  - glob: _config.yml
+    _enabled_editors:
+      - data
+  - glob: package.json
+    _enabled_editors:
+      - data
+
+# Editor conveniences.
+editor:
+  default_path: /source/index.md
+
+source_editor:
+  theme: basic_dark
+  tab_size: 2
+  show_gutter: true
