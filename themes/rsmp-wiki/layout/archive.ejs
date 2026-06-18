@@ -1,5 +1,27 @@
-<article class="wiki-card">
-  <div class="bossbar"><span>归档</span></div>
-  <h1>归档</h1>
-  <p>这里会显示 Wiki 更新内容。</p>
-</article>
+<div class="mc-content-layout">
+    <aside class="mc-sidebar">
+        <div class="mc-gui-panel sidebar-card">
+            <h3 class="sidebar-title">[ 归档导航 ]</h3>
+            <div class="toc-content"><p class="empty-toc">暂无归档内容</p></div>
+        </div>
+    </aside>
+    <article class="mc-article">
+        <div class="mc-parchment-page">
+            <div class="parchment-header">
+                <h1 class="page-title"><%= page.title || '归档' %></h1>
+                <hr class="pixel-hr">
+            </div>
+            <div class="parchment-body entry-content">
+                <% if (page.posts && page.posts.length) { %>
+                    <ul>
+                        <% page.posts.each(function(post){ %>
+                            <li><a href="<%- url_for(post.path) %>"><%= post.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>暂无归档内容。</p>
+                <% } %>
+            </div>
+        </div>
+    </article>
+</div>

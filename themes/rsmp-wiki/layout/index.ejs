@@ -1,9 +1,91 @@
-<article class="wiki-card home-card">
-  <div class="bossbar"><span><%= config.title %></span></div>
-  <% if (page.content) { %>
-    <%- page.content %>
-  <% } else { %>
-    <h1>RSMP S2 Wiki</h1>
-    <p>欢迎来到 RSMP S2 玩家手册。</p>
-  <% } %>
-</article>
+<div class="mc-dashboard">
+    <section class="mc-hero-panel">
+        <div class="bossbar-container animate-pulse">
+            <div class="bossbar-title">RSMP S2: 祭坛季</div>
+            <div class="bossbar-track">
+                <div class="bossbar-fill progress-purple" style="width: 100%"></div>
+            </div>
+        </div>
+        <h2 class="hero-subtext">荒野生存 / 生活系统重做 / 玩家必备手册</h2>
+        <div class="actionbar-tip">手持 [时钟] 可查看日期、星期、天数和时间</div>
+    </section>
+
+    <section class="mc-grid-section">
+        <h3 class="section-heading"><span class="accent-gold">✦</span> 核心生存导航</h3>
+        <div class="mc-slots-grid">
+            <a href="<%- url_for('guide/index.html') %>" class="slot-card">
+                <div class="slot-icon">📖</div>
+                <div class="slot-info">
+                    <h4>新手必读</h4>
+                    <p>心数机制、复活凭证、淘汰机制与前期生存指南。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('recipes/index.html') %>" class="slot-card">
+                <div class="slot-icon">🧱</div>
+                <div class="slot-info">
+                    <h4>合成配方重做</h4>
+                    <p>进入“方块时代”，查看更昂贵的钻石装备与金食物配方。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('cooking/index.html') %>" class="slot-card">
+                <div class="slot-icon">🍲</div>
+                <div class="slot-info">
+                    <h4>炒菜系统</h4>
+                    <p>拒绝无脑合成。练习真实的熔炉翻锅，制作高属性珍馐。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('farming/index.html') %>" class="slot-card">
+                <div class="slot-icon">🧑‍🌾</div>
+                <div class="slot-info">
+                    <h4>农务与果树</h4>
+                    <p>氮磷钾肥料科学施肥。群系契合，收获挂载高品质果实。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('fishing/index.html') %>" class="slot-card">
+                <div class="slot-icon">🎣</div>
+                <div class="slot-info">
+                    <h4>QTE 钓鱼系统</h4>
+                    <p>水域回声小游戏。精确把控捕获条，解锁各群系特种自定义鱼。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('calendar/index.html') %>" class="slot-card">
+                <div class="slot-icon">⏰</div>
+                <div class="slot-info">
+                    <h4>历法与星期怪物</h4>
+                    <p>跟随纪年推演，感知星期难度变化。周日夜晚才是终极考验。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('enchant/index.html') %>" class="slot-card">
+                <div class="slot-icon">🔮</div>
+                <div class="slot-info">
+                    <h4>古遗附魔阵</h4>
+                    <p>铁砧规则线性升级，回响碎片深度附魔，维护耐久上限。</p>
+                </div>
+            </a>
+            <a href="<%- url_for('bosses/index.html') %>" class="slot-card">
+                <div class="slot-icon">☠️</div>
+                <div class="slot-info">
+                    <h4>精英怪与 Boss</h4>
+                    <p>环境威胁剧增。高价值生物有概率产生精英突变及区域性大 Boss。</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <div class="dashboard-footer-layout">
+        <div class="mc-gui-panel info-panel-wood">
+            <h4 class="panel-heading">📜 生存贴士</h4>
+            <p>RSMP S2 的强度不是只看装备。会看星期、会做饭、会种田、会钓鱼的玩家，活得更久。</p>
+            <p class="text-small accent-purple">※ 钻石装备及基础物资产出限制已被彻底重设，出门探索前请务必仔细研读对应手册章节。</p>
+        </div>
+        <div class="mc-gui-panel info-panel-stone">
+            <h4 class="panel-heading">🔧 最近更新概览</h4>
+            <ul class="stone-list">
+                <li>修复金胡萝卜与金苹果的合成校验规则</li>
+                <li>修复“太阳照常升起”技能产生的临时岩浆残留缺陷</li>
+                <li>新增游戏内手持时钟同步更新与星期怪物难度映射</li>
+            </ul>
+            <a href="<%- url_for('changelog/index.html') %>" class="mc-btn-pixel">查看完整修复记录 →</a>
+        </div>
+    </div>
+</div>

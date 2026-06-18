@@ -1,18 +1,26 @@
-<header class="site-header">
-  <div class="header-top">
-    <a class="brand" href="<%- url_for('/') %>">
-      <span class="brand-icon">✦</span>
-      <span>
-        <strong>RSMP S2 Wiki</strong>
-        <small>祭坛季 · 荒野生存 · 生活系统重做</small>
-      </span>
-    </a>
-    <div class="clock-chip">历法 | 769年1月1日 星期一 | 第1天 | 06:00</div>
-  </div>
-  <nav class="site-nav" aria-label="主导航">
-    <% const menu = theme.menu || {}; %>
-    <% Object.keys(menu).forEach(function(name){ %>
-      <a href="<%- url_for(menu[name]) %>"><%= name %></a>
-    <% }) %>
-  </nav>
+<header class="mc-navbar">
+    <div class="nav-container">
+        <a href="<%- url_for('/') %>" class="nav-brand">
+            <span class="logo-pixel">⛏️</span> RSMP S2 Wiki
+        </a>
+        <button class="nav-toggle" id="menuToggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="<%- url_for('/') %>" class="nav-item">首页</a>
+            <a href="<%- url_for('guide/index.html') %>" class="nav-item">新手必读</a>
+            <a href="<%- url_for('recipes/index.html') %>" class="nav-item">合成配方</a>
+            <a href="<%- url_for('cooking/index.html') %>" class="nav-item">炒菜系统</a>
+            <a href="<%- url_for('farming/index.html') %>" class="nav-item">农务果树</a>
+            <a href="<%- url_for('fishing/index.html') %>" class="nav-item">钓鱼系统</a>
+            <a href="<%- url_for('calendar/index.html') %>" class="nav-item">历法</a>
+            <a href="<%- url_for('mobs-week/index.html') %>" class="nav-item">星期怪物</a>
+            <a href="<%- url_for('enchant/index.html') %>" class="nav-item">装备附魔</a>
+            <a href="<%- url_for('bosses/index.html') %>" class="nav-item">精英怪Boss</a>
+            <a href="<%- url_for('villagers-loot/index.html') %>" class="nav-item">村民战利品</a>
+            <a href="<%- url_for('changelog/index.html') %>" class="nav-item">修复记录</a>
+        </nav>
+    </div>
 </header>

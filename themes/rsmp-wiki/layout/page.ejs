@@ -1,4 +1,24 @@
-<article class="wiki-card">
-  <div class="bossbar"><span><%= page.title || 'RSMP S2 Wiki' %></span></div>
-  <%- page.content %>
-</article>
+<div class="mc-content-layout">
+    <% if (page.encrypt || page.toc !== false) { %>
+        <aside class="mc-sidebar">
+            <div class="mc-gui-panel sidebar-card">
+                <h3 class="sidebar-title">[ 目录导航 ]</h3>
+                <div class="toc-content">
+                    <%- toc(page.content, {list_number: false}) || '<p class="empty-toc">无章节目录</p>' %>
+                </div>
+            </div>
+        </aside>
+    <% } %>
+
+    <article class="mc-article">
+        <div class="mc-parchment-page">
+            <div class="parchment-header">
+                <h1 class="page-title"><%= page.title %></h1>
+                <hr class="pixel-hr">
+            </div>
+            <div class="parchment-body entry-content">
+                <%- page.content %>
+            </div>
+        </div>
+    </article>
+</div>

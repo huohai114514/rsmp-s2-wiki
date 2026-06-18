@@ -1,113 +1,600 @@
-:root{
-  --bg:#0f1110;
-  --stone:#191715;
-  --stone-2:#24211d;
-  --paper:#d9c49a;
-  --paper-2:#ead8aa;
-  --ink:#2a2018;
-  --gold:#d6a84f;
-  --amethyst:#9b68d9;
-  --emerald:#4fb46b;
-  --red:#c75146;
-  --blue:#66a6d9;
-  --grid:#3a342c;
-  --line:#705d3e;
+/* ==========================================================================
+   Minecraft Style variables & Base Resets
+   ========================================================================== */
+:root {
+    --mc-font: 'Minecraft', 'Noto Sans SC', monospace, sans-serif;
+    --bg-dark-stone: #242424;
+    --gui-gray: #c6c6c6;
+    --gui-dark-panel: #181818;
+    --gui-slot-bg: #8b8b8b;
+    --parchment-bg: #ead8a6;
+    --parchment-light: #f3e4b8;
+    --parchment-text: #2c1e11;
+    
+    /* System Themes */
+    --gold: #f5c542;
+    --gold-dark: #b8860b;
+    --amethyst: #a855f7;
+    --soul-teal: #37d5d6;
+    --bossbar-pink: #d946ef;
+    
+    /* Signpost Board colors */
+    --sign-wood: #a07243;
+    --sign-border: #5d401b;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  color:var(--paper-2);
-  background:
-    radial-gradient(circle at 20% 0%, rgba(155,104,217,.18), transparent 28rem),
-    radial-gradient(circle at 90% 10%, rgba(214,168,79,.12), transparent 25rem),
-    linear-gradient(180deg,#0b0c0b,#151311 45%,#0c0b0a);
-  font-family:"Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
-  line-height:1.75;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.pixel-bg{
-  position:fixed; inset:0; pointer-events:none; opacity:.26; z-index:-1;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-  background-size:16px 16px;
+
+body {
+    background-color: var(--bg-dark-stone);
+    /* Generate dark grid line patterns to replicate Deepslate pattern textures without images */
+    background-image: 
+        linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px),
+        linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: var(--mc-font);
+    color: #e0e0e0;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
-a{color:#ffd36a; text-decoration:none}
-a:hover{text-decoration:underline}
-.site-header{
-  max-width:1180px; margin:0 auto; padding:20px 18px 10px;
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
-.header-top{
-  display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;
-  padding:14px 16px; background:linear-gradient(180deg,#24211d,#151412); border:2px solid #4b4031;
-  box-shadow:0 8px 0 rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.03);
+a:hover {
+    color: #fff;
 }
-.brand{display:flex; gap:12px; align-items:center; color:var(--paper-2)}
-.brand:hover{text-decoration:none}
-.brand-icon{display:grid; place-items:center; width:40px; height:40px; background:#382f27; border:2px solid var(--gold); color:#d8b4ff; box-shadow:inset 0 0 0 2px #1b1713}
-.brand strong{font-size:1.25rem; display:block; letter-spacing:.5px}
-.brand small{display:block; color:#bca77d; font-size:.82rem}
-.clock-chip{font-size:.92rem; color:#e7d29c; border:2px solid #5c4b33; padding:8px 12px; background:#11100f; box-shadow:inset 0 0 0 1px rgba(214,168,79,.15)}
-.site-nav{
-  display:flex; flex-wrap:wrap; gap:8px; padding:12px 0 0;
+
+/* ==========================================================================
+   Layout Containers
+   ========================================================================== */
+.mc-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-.site-nav a{
-  color:#ead8aa; background:#1c1a17; border:2px solid #3e372e; padding:7px 10px; font-size:.92rem;
+
+.mc-main-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.site-nav a:hover{background:#2b251f; border-color:var(--amethyst); text-decoration:none}
-.page-shell{max-width:1180px; margin:0 auto; padding:14px 18px 48px}
-.wiki-card{
-  background:linear-gradient(180deg,rgba(36,33,29,.96),rgba(19,18,16,.98));
-  border:3px solid #4a4032;
-  box-shadow:0 12px 0 rgba(0,0,0,.42), inset 0 0 0 2px rgba(255,255,255,.035);
-  padding:20px;
+
+/* ==========================================================================
+   Navigation Header UI (Minecraft Custom Style)
+   ========================================================================== */
+.mc-navbar {
+    background-color: #111;
+    border-bottom: 4px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 20px;
 }
-.bossbar{
-  height:30px; display:flex; align-items:center; justify-content:center; margin:0 0 20px;
-  background:linear-gradient(90deg,#3d1d55 0%, #6f38a7 55%, #27173a 55%, #1d1624 100%);
-  border:2px solid #12091c; box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),0 3px 0 rgba(0,0,0,.45);
-  color:white; text-shadow:2px 2px #000; font-weight:800;
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-h1,h2,h3{color:#ffe3a0; line-height:1.28; margin-top:1.35em; margin-bottom:.55em; text-shadow:2px 2px rgba(0,0,0,.45)}
-h1{font-size:2.1rem; border-bottom:3px solid #5a4a34; padding-bottom:.35rem}
-h2{font-size:1.55rem}
-h3{font-size:1.18rem; color:#d8b4ff}
-p,li{color:#ead8aa}
-blockquote{
-  margin:1rem 0; padding:12px 14px; border-left:6px solid var(--gold);
-  background:#151311; color:#ffe8b8; box-shadow:inset 0 0 0 2px rgba(255,255,255,.03);
+.nav-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-hr{border:0; border-top:2px solid #4b4031; margin:26px 0}
-code{background:#111; color:#b9ffca; padding:2px 5px; border:1px solid #333}
-pre{overflow:auto; background:#0d0d0d; border:2px solid #34302a; padding:14px}
-table{width:100%; border-collapse:separate; border-spacing:0; margin:14px 0 22px; overflow:hidden}
-th,td{border:1px solid #4b4031; padding:10px 11px; vertical-align:top}
-th{background:#30271e; color:#ffd36a; text-align:left}
-td{background:rgba(18,17,15,.7); color:#ead8aa}
-tr:nth-child(even) td{background:rgba(29,26,22,.75)}
-.manual-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:18px 0}
-.manual-card{background:#151311; border:2px solid #554735; padding:14px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.025)}
-.manual-card strong{color:#ffe3a0; display:block; margin-bottom:5px}
-.sign{
-  background:linear-gradient(180deg,#9b6b35,#7a5025); color:#fff0ba; padding:13px 15px; border:3px solid #4a2c13;
-  text-shadow:1px 1px #2a1608; box-shadow:inset 0 0 0 2px rgba(255,255,255,.09); margin:18px 0;
+.nav-menu {
+    display: flex;
+    gap: 4px;
 }
-.actionbar{background:#070707; color:#e8e8e8; border:2px solid #333; padding:10px 12px; text-align:center; margin:12px 0; font-family:monospace}
-.item-grid{display:grid; grid-template-columns:repeat(3, minmax(70px, 1fr)); gap:6px; max-width:420px; margin:12px 0 24px}
-.slot{min-height:64px; display:flex; align-items:center; justify-content:center; text-align:center; padding:6px; background:#1b1b1b; border:3px solid #555; box-shadow:inset 3px 3px #0a0a0a, inset -3px -3px #777; color:#f0e2b6; font-size:.92rem}
-.slot.empty{color:#5f5b53}
-.recipe-block{background:#151311; border:2px solid #4b4031; padding:14px 16px; margin:18px 0}
-.recipe-title{font-weight:900; color:#ffe3a0; margin-bottom:8px; font-size:1.1rem}
-.tag{display:inline-block; padding:2px 7px; border:1px solid #6b5c45; background:#221e19; color:#ffd36a; margin:2px; border-radius:0}
-.site-footer{max-width:1180px; margin:0 auto; padding:20px 18px 34px; color:#bca77d; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; border-top:2px solid #332d25}
-.footer-tip{color:#d8b4ff}
-@media (max-width:720px){
-  .wiki-card{padding:14px; border-width:2px}
-  h1{font-size:1.62rem}
-  .site-nav{overflow:auto; flex-wrap:nowrap; padding-bottom:8px}
-  .site-nav a{white-space:nowrap}
-  .item-grid{grid-template-columns:repeat(3,1fr)}
-  .slot{min-height:54px; font-size:.78rem}
-  table{font-size:.88rem}
-  th,td{padding:8px}
+.nav-item {
+    color: #aaa;
+    padding: 8px 12px;
+    background: #222;
+    border: 2px solid #444;
+    font-size: 0.9rem;
+    box-shadow: inset -2px -2px 0px #000;
+}
+.nav-item:hover, .nav-item.active {
+    color: var(--gold);
+    background: #333;
+    border-color: var(--gold);
+}
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.nav-toggle .bar {
+    width: 24px;
+    height: 3px;
+    background-color: white;
+}
+
+/* ==========================================================================
+   Home & Dashboard Sections
+   ========================================================================== */
+.mc-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mc-hero-panel {
+    background: #000;
+    border: 4px solid #444;
+    border-radius: 2px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+.hero-subtext {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: #bbb;
+}
+
+/* BossBar Components */
+.bossbar-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.bossbar-title {
+    font-size: 1.4rem;
+    color: #ff55ff;
+    text-shadow: 2px 2px 0px #3f003f;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+.bossbar-track {
+    background: #4a004a;
+    border: 2px solid #222;
+    height: 14px;
+    padding: 1px;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.8);
+}
+.bossbar-fill {
+    height: 100%;
+}
+.progress-purple { background-color: var(--bossbar-pink); }
+
+/* ActionBar Text style */
+.actionbar-tip {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(0,0,0,0.75);
+    border: 2px solid #555;
+    padding: 6px 16px;
+    color: var(--soul-teal);
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* Card Slot Grid */
+.section-heading {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0px #000;
+}
+.accent-gold { color: var(--gold); }
+.mc-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+}
+.slot-card {
+    background: var(--gui-dark-panel);
+    border: 3px solid #3a3a3a;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.8);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.slot-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+}
+.slot-icon {
+    background: var(--gui-slot-bg);
+    border: 2px solid #3c3c3c;
+    min-width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: inset 3px 3px 3px rgba(0,0,0,0.5), 2px 2px 0px rgba(0,0,0,0.3);
+}
+.slot-info h4 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+}
+.slot-info p {
+    color: #aaa;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Panels */
+.dashboard-footer-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.mc-gui-panel {
+    border: 3px solid #000;
+    padding: 20px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+}
+.info-panel-wood {
+    background: var(--sign-wood);
+    color: #fff;
+    border-color: var(--sign-border);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+.info-panel-stone {
+    background: #333;
+    border-color: #555;
+}
+.panel-heading {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    border-bottom: 2px dashed rgba(255,255,255,0.2);
+    padding-bottom: 6px;
+}
+.stone-list {
+    list-style: square inside;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+.mc-btn-pixel {
+    display: inline-block;
+    background: #5c5c5c;
+    border: 2px solid #fff;
+    box-shadow: inset -2px -2px 0px #212121, 2px 2px 0px #000;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.mc-btn-pixel:hover {
+    background: #4a4a4a;
+    border-color: var(--gold);
+}
+
+/* ==========================================================================
+   Content Documentation Layout (Parchment & Sidebar)
+   ========================================================================== */
+.mc-content-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.mc-sidebar {
+    position: sticky;
+    top: 80px;
+}
+.sidebar-card {
+    background: #2a2a2a;
+    border: 3px solid #111;
+    border-radius: 1px;
+}
+.sidebar-title {
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-align: center;
+}
+.toc-content ul {
+    list-style: none;
+    padding-left: 10px;
+}
+.toc-content li {
+    margin: 6px 0;
+}
+.toc-content a {
+    color: #bbb;
+    font-size: 0.88rem;
+}
+.toc-content a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+/* Main Parchment Style Card */
+.mc-parchment-page {
+    background-color: var(--parchment-bg);
+    border: 4px solid #5d401b;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.6), inset 0 0 40px rgba(93,64,27,0.15);
+    color: var(--parchment-text);
+    padding: 35px;
+    border-radius: 2px;
+}
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1008;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+}
+.pixel-hr {
+    border: none;
+    border-top: 3px double #5d401b;
+    margin: 15px 0 25px;
+}
+
+/* Markdown typography adaptations on parchment */
+.entry-content h2 {
+    font-size: 1.4rem;
+    margin: 25px 0 12px;
+    color: #402812;
+    border-bottom: 2px solid rgba(93,64,27,0.2);
+    padding-bottom: 4px;
+}
+.entry-content h3 {
+    font-size: 1.15rem;
+    margin: 20px 0 10px;
+    color: #56391c;
+}
+.entry-content p {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+}
+.entry-content ul, .entry-content ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+.entry-content li {
+    margin-bottom: 4px;
+}
+
+/* Highlight tags mimicking items */
+.mc-item-highlight {
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #701a1a;
+}
+
+/* ==========================================================================
+   Crafting Grid 3x3 UI
+   ========================================================================== */
+.crafting-container {
+    background: var(--gui-gray);
+    border: 4px solid #3c3c3c;
+    box-shadow: inset -3px -3px 0px #555, inset 3px 3px 0px #fff, 4px 4px 10px rgba(0,0,0,0.3);
+    max-width: 320px;
+    margin: 20px 0;
+    padding: 14px;
+}
+.crafting-title {
+    color: #3f3f3f;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.crafting-grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: fit-content;
+}
+.crafting-cell {
+    background: var(--gui-slot-bg);
+    border: 3px solid #373737;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #fff;
+    text-align: center;
+    padding: 2px;
+    box-shadow: inset 3px 3px 3px rgba(0,0,0,0.6);
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 1.1;
+}
+.crafting-cell.empty-cell {
+    background: #8b8b8b;
+    opacity: 0.4;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.5);
+}
+.crafting-cell:not(.empty-cell):hover {
+    background: #9c9c9c;
+    border-color: var(--gold);
+    cursor: help;
+}
+
+/* ==========================================================================
+   In-game Elements Mappings (Signs, Blockquotes, Live UI Data Charts)
+   ========================================================================== */
+/* In-game Oak wood sign posts */
+.mc-signpost-blockquote {
+    background-color: var(--sign-wood);
+    border: 3px dashed var(--sign-border);
+    color: #301b04;
+    padding: 15px 20px;
+    margin: 20px 0;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+    position: relative;
+}
+.mc-signpost-blockquote::before {
+    content: "[ 告示牌告示 ]";
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #5d401b;
+    margin-bottom: 5px;
+}
+
+/* Embedded Data tables */
+.parchment-body table:not(.crafting-table-raw) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    background: var(--parchment-light);
+    border: 2px solid #8d6e45;
+}
+.parchment-body table th {
+    background: #8d6e45;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+.parchment-body table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(93,64,27,0.15);
+    color: #3d2b19;
+}
+.parchment-body table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Week Mobs Danger Color codes dynamically injected */
+.danger-row-1 { background-color: rgba(46, 204, 113, 0.15) !important; } /* Monday Safe */
+.danger-row-2 { background-color: rgba(241, 196, 15, 0.1) !important; }
+.danger-row-3 { background-color: rgba(241, 196, 15, 0.15) !important; }
+.danger-row-4 { background-color: rgba(230, 126, 34, 0.15) !important; }
+.danger-row-5 { background-color: rgba(230, 126, 34, 0.25) !important; }
+.danger-row-6 { background-color: rgba(231, 76, 60, 0.2) !important; }
+.danger-row-7 { background-color: rgba(231, 76, 60, 0.35) !important; font-weight: bold; } /* Sunday Hardest */
+
+/* Live Simulator Bar Layouts (ActionBar / Fire Gauge) */
+.mc-live-bar-panel {
+    background: #111;
+    border: 2px solid #555;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 2px;
+}
+.live-bar-title {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+.live-bar-track {
+    background: #222;
+    height: 16px;
+    border: 1px solid #444;
+    position: relative;
+}
+.live-bar-fill {
+    height: 100%;
+}
+.fill-fire { background: linear-gradient(90deg, #e67e22, #e74c3c); }
+.live-bar-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #fff;
+    line-height: 16px;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.mc-footer {
+    background: #111;
+    border-top: 4px solid #222;
+    padding: 25px 20px;
+    text-align: center;
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 50px;
+}
+.footer-decor {
+    width: 40px;
+    height: 6px;
+    background: var(--gold);
+    margin: 0 auto 15px;
+}
+
+/* ==========================================================================
+   Responsive Systems (Mobile collapses & adaptation layouts)
+   ========================================================================== */
+@media (max-width: 920px) {
+    .mc-content-layout {
+        grid-template-columns: 1fr;
+    }
+    .mc-sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
+    }
+    .dashboard-footer-layout {
+        grid-template-columns: 1fr;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        background: #111;
+        border-bottom: 4px solid #333;
+        padding: 10px;
+    }
+    .nav-menu.show {
+        display: flex;
+    }
+    .nav-toggle {
+        display: flex;
+    }
+    .parchment-body {
+        overflow-x: auto;
+    }
+    .parchment-body table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+/* === RSMP S2 safety patch === */
+.text-small { font-size: 0.82rem; }
+.accent-purple { color: var(--amethyst); }
+.mc-article { min-width: 0; }
+.entry-content img { max-width: 100%; height: auto; }
+.entry-content code { background: rgba(0,0,0,0.08); padding: 2px 5px; border-radius: 3px; }
+.empty-toc { color: #999; font-size: 0.85rem; text-align: center; }
+@keyframes rsmpPulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.18); } }
+.animate-pulse .bossbar-fill { animation: rsmpPulse 2.5s ease-in-out infinite; }
+@media (max-width: 560px) {
+  .mc-main-container { padding: 12px; }
+  .mc-parchment-page { padding: 20px 16px; }
+  .crafting-cell { width: 48px; height: 48px; font-size: 0.68rem; }
+  .mc-hero-panel { padding: 22px 14px; }
 }
